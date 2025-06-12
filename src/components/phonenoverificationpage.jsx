@@ -8,6 +8,13 @@ import { useDispatch } from "react-redux";
 import { setNumber } from "../features/phonenumberSlice";
 import { useNavigate } from "react-router-dom";
 
+import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
+import HelpIcon from "@mui/icons-material/Help";
+import LockIcon from "@mui/icons-material/Lock";
+import InfoIcon from "@mui/icons-material/Info";
+import CloseIcon from "@mui/icons-material/Close";
+
+
 function PhoneNumberVerificationPage() {
   const [localNumber, setLocalNumber] = useState("");
   const [sending, setSending] = useState(false);
@@ -103,33 +110,33 @@ function PhoneNumberVerificationPage() {
                 : "Please enter your valid 10-digit mobile number"}
             </p>
 
-            <div
-              style={{
-                width: "100%",
-                maxWidth: "330px",
-                height: "100px",
-                position: "relative",
+            <SpeedDial
+              ariaLabel="More Actions"
+              sx={{
+                position: "fixed",
+                bottom: 90,
+                right: 20,
+                "& .MuiFab-primary": {
+                  backgroundColor: "#d8b4fe",
+                  color: "#6a0dad",
+                },
               }}
+              icon={<SpeedDialIcon openIcon={<CloseIcon />} />}
+              direction="up"
             >
-              <button
-                type="button"
-                style={{
-                  height: "42px",
-                  width: "42px",
-                  borderRadius: "50%",
-                  border: "1px solid purple",
-                  backgroundColor: "rgb(194, 61, 201)",
-                  fontSize: "28px",
-                  position: "absolute",
-                  right: "0px",
-                  top: "10px",
-                  color: "#fff",
-                  cursor: "pointer",
-                }}
-              >
-                +
-              </button>
-            </div>
+              <SpeedDialAction
+                icon={<HelpIcon />}
+                slotProps={{ tooltip: { title: "Help" } }}
+              />
+              <SpeedDialAction
+                icon={<LockIcon />}
+                slotProps={{ tooltip: { title: "Privacy" } }}
+              />
+              <SpeedDialAction
+                icon={<InfoIcon />}
+                slotProps={{ tooltip: { title: "Info" } }}
+              />
+            </SpeedDial>
 
             <button
               onClick={handleSendOtp}
