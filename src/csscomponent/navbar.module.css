@@ -1,0 +1,329 @@
+.navbar {
+  width: 100vw;
+  background-color: rgb(231, 230, 230);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  height: 16vh;
+  display: flex; 
+  align-items: center;
+  padding: 0 2vw;
+  box-sizing: border-box;
+}
+
+
+.languageSelect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  padding: 3px 3px 3px 7px;
+  font-size: 15px;
+  height: 40px;
+  width: 85px;
+  margin: 20px 0px 15px 0px;
+  cursor: pointer;
+  border: 2px solid purple;
+  border-radius: 10px;
+}
+
+.menuButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  height: 40px;
+  width: 40px;
+  margin: 20px 15px 15px 0px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: purple;
+}
+
+@media (max-width: 400px) {
+  .navbar {
+    height: 10vh;
+  }
+
+  .languageSelect {
+    height: 30px;
+    width: 70px;
+    margin: 1.7vh 0px 15px 0px;
+  }
+
+  .menuButton {
+    height: 30px;
+    width: 30px;
+    font-size: 22px;
+    margin: 1.7vh 15px 15px 0px;
+  }
+}
+
+
+@media (min-width: 401px) {
+  .navbar {
+    height: 10vh;
+  }
+
+  .languageSelect {
+    height: 30px;
+    width: 75px;
+  }
+
+  .menuButton {
+    height: 30px;
+    width: 30px;
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 601px) {
+  .navbar {
+    height: 12vh;
+  }
+
+  .languageSelect {
+    height: 30px;
+    width: 75px;
+  }
+
+  .menuButton {
+    height: 30px;
+    width: 30px;
+    font-size: 22px;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  right: -200vw;
+  bottom: 0;
+  padding: 10px;
+  height: 100%;
+  width: 80%;
+  max-width: 400px;
+  background-color: rgb(225, 214, 225);
+  border-radius: 15px 0 0 15px;
+  transition: right 0.3s ease-in-out;
+  font-size: 20px;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.sidebarOpen {
+  right: 0;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.sidebarHeader button {
+  height: 43px;
+  width: 43px;
+  font-size: 20px;
+  border: 2px solid rgb(119, 49, 119);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sidebarHeader button:hover {
+  background-color: purple;
+  color: white;
+  border-color: purple;
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.menuList button {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 15px;
+  width: 100%;
+  max-width: 450px;
+  padding: 15px;
+  font-size: 17px;
+  background: none;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  color: #333;
+}
+
+.menuList button img {
+  height: 28px;
+  width: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.menuList button span {
+
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.menuList button:hover {
+  background-color: purple;
+  transform: scale(1.02);
+  border-color: purple;
+  color: white;
+}
+
+.sidebarFooter {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+
+.sidebarFooter button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  width: 90px;
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  text-decoration: underline;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sidebarFooter button:hover {
+  background-color: red;
+  color: white;
+}
+
+.logoutIcon {
+  height: 20px;
+  width: auto;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: rgb(71, 67, 67);
+  width: 80%;
+  margin: 20px auto;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    /* min-width: 60vw; */
+    max-width: 400px;
+    font-size: 18px;
+  }
+  
+  .menuList button {
+    text-align: left;
+    font-size: 15px;
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+  }
+
+  .menuList button img {
+    height: 24px;
+    width: 24px;
+  }
+
+  .sidebarHeader button {
+    height: 35px;
+    width: 35px;
+    font-size: 18px;
+  }
+
+  .sidebarFooter {
+    font-size: 13px;
+  }
+
+  .sidebarFooter button {
+    height: 28px;
+    width: 80px;
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+
+  .logoutIcon {
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100vw !important;
+    max-width: 280px !important;
+    height: 100vh;
+    border-radius: 0;
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .menuList button {
+    font-size: 18px;
+    padding: 10px 12px;
+  }
+
+  .menuList button img {
+    height: 22px;
+    width: 22px;
+  }
+
+  .sidebarHeader button {
+    height: 30px;
+    width: 30px;
+    font-size: 16px;
+  }
+
+  .sidebarFooter {
+    margin-top: 80px;
+    font-size: 12px;
+  }
+
+  .sidebarFooter button {
+    height: 28px;
+    width: 75px;
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+
+  .logoutIcon {
+    height: 16px;
+  }
+}

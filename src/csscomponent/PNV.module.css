@@ -1,0 +1,128 @@
+.phoneverificationbody {
+  /* background-color: #d9c8e3; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 20px; */
+  box-sizing: border-box;
+}
+
+
+.navbar{
+    /* background-color:red; */
+    height:10vh;
+    width:100%;
+    padding:15px;
+}
+
+.navbar p{
+  margin: 4px 0px 0px 10px;
+}
+
+@media (min-width: 500px){ 
+  .navbar{
+     height: 13vh; 
+     /* background-color: aqua; */
+  }
+  .navbar p{
+    font-size: 24px;
+    margin-left: 22px;
+  }
+}
+
+.maindiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.formcontainer {
+  width: 100%;
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.phonelogo {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.heading {
+  margin: 10px 0;
+}
+
+.subtext {
+  margin-bottom: 10px;
+}
+
+.label {
+  margin: 15px 0 10px 0;
+  font-weight: 500;
+}
+
+.inputbox {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+.counter {
+  margin: 10px 0;
+  text-align: end;
+  width: 100%;
+  font-size: 14px;
+}
+
+.infoText {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.proceedButton {
+  width: 100%;
+  max-width: 330px;
+  margin-top: 10px;
+  /* color: white; */
+  border: 2px solid yellow;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  /* transition: background-color 0.3s; */
+}
+
+.enabled {
+  background-color: purple;
+  cursor: pointer;
+  color: white;
+}
+
+.disabled {
+  background-color: #a77bca;
+  color: #555;
+  cursor: not-allowed;
+  color: white;
+}
+
+@media (max-width: 480px) {
+ 
+  .maindiv{
+    width: 100%;
+    max-width: 350px;
+  }
+}

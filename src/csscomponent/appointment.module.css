@@ -1,0 +1,276 @@
+.appointmentWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%; 
+  padding: 10px;
+  margin-top: 13vh;
+  box-sizing: border-box; 
+  overflow-x: hidden; 
+}
+
+.appointmentList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.appointmentCard {
+  background-color: #f4f0ff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 550px) {
+ .appointmentWrapper{
+    margin-top: 11vh;
+  }
+}
+
+@media (min-width: 401px) {
+  .navbar {
+    height: 10vh;
+  }
+}
+
+@media (min-width: 601px) {
+  .navbar {
+    height: 12vh;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  color: #4b0082;
+  margin-bottom: 8px;
+}
+
+.cardBody p {
+  margin: 4px 0;
+  color: #444;
+}
+
+.searchFilterSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; 
+}
+
+.inputAndImgDiv {
+  border-radius: 18px;
+  flex: 1; 
+  min-width: 250px;
+  max-width: 700px;
+  padding: 5px 10px;
+  border: 2px solid rgb(197, 191, 191);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputAndImgDiv input {
+  flex: 1;
+  font-size: 1rem;
+  border: none;
+  height: 45px;
+  padding: 10px;
+  min-width: 0;
+  background-color: #fff;
+  outline: none;
+}
+
+.searchFilterSection img {
+  height: 23px;
+  width: 25px;
+  object-fit: contain;
+}
+
+.filterIcon {
+  background-color: #f2e7ff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabs {
+  display: flex;
+  padding: 10px;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.noAppointments{
+  height: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noAppointments p{
+  font-size: 18px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+
+.noAppointments img{
+  margin: 50px;
+  margin-top: 70px;
+  height: 95%;
+  max-height: 400px;
+  width: 95%;
+  max-width: 400px;
+}
+
+.bookBtn {
+  /* margin-top: auto; */
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* background-color: red; */
+}
+
+
+.bookBtn button {
+  height: 50px;
+  padding: 14px 24px;
+  width: 95%;
+  max-width: 400px;
+  background-color: #8a2be2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.filterPopup {
+  position: fixed;
+  bottom: 0;
+  /* left: 0; */
+  right: 0;
+  /* padding: 20px; */
+}
+
+.filterCard {
+  background-color: #f9f4ff;
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  max-width: 550px;
+  padding: 20px;
+}
+
+.filterCard h4 {
+  margin-bottom: 15px;
+  margin-left: 8px;
+}
+
+.statusSection label{
+  margin-left: 8px;
+}
+
+.statusOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  /* background-color: red; */
+  display: grid;
+  grid-template-columns: repeat(3,1.1fr);
+
+  /* gap: 1fr; */
+  padding: 8px;
+}
+
+.statusOptions button {
+  padding: 8px 14px;
+  border: 1px solid #bbb;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100px;
+  /* border: 2px solid yellow; */
+}
+
+.dateSection label{
+  margin-left: 8px;
+}
+
+.dateSection input {
+  margin: 8px 4px 16px 8px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  /* border: 2px solid red; */
+  font-size: 15px;
+}
+
+.filterActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* border: 2px solid red; */
+  padding: 10px;
+}
+
+
+.reset {
+  flex: 1;
+  padding: 12px 10px;
+  border: 1px solid rgb(126, 122, 122);
+  border-radius: 10px;
+  width: 100px;
+  color: #8106f4;
+}
+
+.apply {
+  flex: 1;
+  padding: 12px 10px;
+  background: #8a2be2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100px;
+}
+
+@media screen and (max-width: 468px) {
+/* 
+  .statusOptions {
+    flex-direction: column;
+  } */
+
+  .dateSection input {
+    width: 95%;
+    margin-bottom: 10px;
+  }
+
+  /* .filterActions {
+    flex-direction: column;
+  } */
+}
