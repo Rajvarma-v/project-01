@@ -49,6 +49,8 @@
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
+  /* background-color: red; */
+  margin-bottom: 100px;
 }
 
 .editableEmail dd{

@@ -12,6 +12,7 @@ import {
   TextField,
   IconButton,
   Button,
+  Box,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
@@ -56,7 +57,7 @@ function Homepage() {
     >
 
       <div className={style.usercomponent}>
-        <div
+        {/* <div
           style={{
             display: "flex",
             alignItems: "flex-start",
@@ -84,7 +85,7 @@ function Homepage() {
             will take 1 to 2 minutes to upload and verify the visitor's image.
             Please wait a moment
           </p>
-        </div>
+        </div> */}
 
 
 
@@ -201,15 +202,20 @@ function Homepage() {
 
 
 
-
-          <button
-            className={style.deleteAccBtn}
-            onClick={() => {
-              dispatch(setNumber(''));
-            }}
-          >
-            Delete Account
-          </button>
+         <Box maxWidth={500} sx={{width:"100%", position:"fixed", bottom:"0"}} p={2.2} bgcolor={"white"}>
+            <button
+              className={style.deleteAccBtn}
+              onClick={() => {
+                dispatch(setNumber(''));
+              }}
+              style={{
+                // position:"fixed",
+                // bottom:0
+              }}
+            >
+              Delete Account
+            </button>
+          </Box>
           
         </div>
 

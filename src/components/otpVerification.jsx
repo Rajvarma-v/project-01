@@ -69,6 +69,7 @@ function OTPVerificationPage() {
           bgcolor: "#fdfbfe",
           display: "flex",
           flexDirection: "column",
+          mt:10
         }}
       >
        
@@ -164,7 +165,6 @@ function OTPVerificationPage() {
       
           <Box textAlign="center" mt={2}>
             <Button
-              variant="contained"
               fullWidth
               sx={{
                 backgroundColor: "#c084fc",

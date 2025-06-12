@@ -68,10 +68,11 @@ function AadharVerificationPage(){
           borderRadius: 2,
           p: { xs: 2, sm: 4 },
           minHeight: "85vh",
+          mt:8
         }}
       >
         <Box>
-          <IconButton>
+          <IconButton onClick={() => navigate("/phoneNumberVerificationPage")}>
             <ArrowBackIcon sx={{ color: "purple" }} />
           </IconButton>
         </Box>
@@ -100,7 +101,7 @@ function AadharVerificationPage(){
             </Typography>
           </Box>
 
-          {/* Aadhar Input */}
+      
           <Box width="100%" pb={10}>
             <Typography variant="body2" fontWeight="medium" gutterBottom>
               Please enter your Aadhar Number{" "}
@@ -133,7 +134,7 @@ function AadharVerificationPage(){
           </Box>
         </Box>
 
-        {/* Floating Add Icon */}
+       
         <SpeedDial
           ariaLabel="More Actions"
           sx={{
@@ -162,9 +163,9 @@ function AadharVerificationPage(){
           />
         </SpeedDial>
 
-        {/* Bottom - Terms & Button */}
+        
         <Box display="flex" flexDirection="column" gap={2} mt={3}>
-          <Paper elevation={1} sx={{ p: 2 }}>
+          <Box sx={{ p: 2 , bgcolor:"rgb(242, 241, 241)", borderRadius:"10px"}} >
             <FormControlLabel
               control={
                 <Checkbox checked={checked} onChange={handleCheckboxChange} />
@@ -174,12 +175,12 @@ function AadharVerificationPage(){
                   I agree and confirm to the Terms and Conditions mentioned in
                   the{" "}
                   <Link href="https://digipravesh.com/#/support" underline="hover">
-                    Privacy Policy
+                     Privacy Policy
                   </Link>
                 </Typography>
               }
             />
-          </Paper>
+          </Box>
 
           <Button
             variant="contained"
@@ -188,6 +189,9 @@ function AadharVerificationPage(){
               backgroundColor: "#c084fc",
               textTransform: "none",
               fontWeight: "bold",
+              borderRadius:"10px",
+              fontSize:"19px",
+              p:0.8
             }}
             disabled={!checked}
             onClick={() => navigate("/")}

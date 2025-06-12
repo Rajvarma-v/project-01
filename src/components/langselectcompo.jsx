@@ -11,7 +11,7 @@ function LangSelectCompo() {
   const dispatch = useDispatch();
   const languages = ["English", "हिन्दी", "मराठी"];
   
-  // Managing language selection 
+
   const handleSubmit = () => {
     if (selectedLanguage) {
       dispatch(setLanguage(selectedLanguage));
@@ -40,7 +40,6 @@ function LangSelectCompo() {
         </div>
 
 
-        {/* Language Buttons */}
         <div
           style={{
             width: "100%",
@@ -81,7 +80,7 @@ function LangSelectCompo() {
         </div>
 
 
-        {/* Proceed Button */}
+ 
         <button
           type="submit"
           onClick={handleSubmit}

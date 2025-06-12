@@ -31,7 +31,7 @@ const Appointment = () => {
     <div className={style.appointmentWrapper}>
       <div>
 
-        {/* Search and Filter */}
+      
         <div className={style.searchFilterSection}>
           <div className={style.inputAndImgDiv}>
             <img src={searchLogo} alt="Search" />
@@ -46,7 +46,7 @@ const Appointment = () => {
         </div>
 
 
-        {/* Tabs */}
+   
         <div className={style.tabs}>
           <button
             className={style.tab}
@@ -71,7 +71,7 @@ const Appointment = () => {
         </div>
 
 
-        {/* Appointment Data */}
+    
         {view === "upcoming" ? (
           <div className={style.noAppointments}>
             <p>No Upcoming Appointments!</p>
@@ -88,7 +88,7 @@ const Appointment = () => {
       </div>
 
 
-      {/* Book Button */}
+ 
       <div className={style.bookBtn}>
         <button onClick={() => navigate("/bookappointment")}>
           Book New Appointment
@@ -96,7 +96,7 @@ const Appointment = () => {
       </div>
 
 
-      {/* Filter Popup */}
+   
       {showFilters && (
         <div className={style.filterPopup}>
           <div className={style.filterCard}>

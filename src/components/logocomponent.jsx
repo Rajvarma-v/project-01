@@ -15,7 +15,7 @@ function LogoComponent() {
       }}
     >
 
-      {/* Image container */}
+
       <div style={{ flexShrink: 0 }}>
         <img
           src={DGPhandlogo}
@@ -30,7 +30,6 @@ function LogoComponent() {
       </div>
 
 
-      {/* Text container */}
       <div
         style={{
           display: "flex",

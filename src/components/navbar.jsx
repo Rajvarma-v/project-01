@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setView } from "../features/appointmentSlice";
+import { setNumber } from "../features/phonenumberSlice";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -75,7 +76,6 @@ function Navbar() {
       )}
 
 
-        {/*Sidebar  */}
       <div className={`${style.sidebar} ${isOpen ? style.sidebarOpen : ""}`}>
         <div className={style.sidebarHeader}>
           <span>
@@ -153,7 +153,7 @@ function Navbar() {
               alignItems: "center",
             }}
           >
-            <button>
+            <button onClick={() => dispatch(setNumber(''))}>
               <img
                 src={logoutlogo}
                 alt="Logout Icon"
