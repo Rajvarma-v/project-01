@@ -30,7 +30,7 @@ function App() {
   }, [phoneNumber, dispatch]);
 
   if (showWelcome) return <Welcomepage />;
-  if (!language) return <LangSelectCompo />;
+  // if (!language) return <LangSelectCompo />;
   if (!phoneNumber) return <PhoneNumberVerificationPage />;
   if (!isLoggedIn) return <OTPVerificationPage />;
   if (!isLoggedIn) return <AadharVerificationPage />;
@@ -38,10 +38,10 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/appointment" element={<Appointment language={language} />} />
+        <Route path="/appointment" element={<Appointment/>} />
         <Route path="/bookappointment" element={<BookAppointment />} />
         <Route path="/welcomepage" element={<Welcomepage />} />
         <Route path="/langSelectCompo" element={<LangSelectCompo />} />
@@ -51,6 +51,7 @@ function App() {
       </Routes>
       {/* <OTPVerificationPage/> */}
       {/* <AadharVerificationPage/> */}
+      {/* <PhoneNumberVerificationPage/> */}
     </>
   );
 }
