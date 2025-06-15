@@ -125,8 +125,8 @@ function Navbar() {
             <button
               onClick={() => {
                 dispatch(setView("history"));
-                navigate("/appointment");
                 setIsOpen(false);
+                navigate("/appointment");
               }}
             >
               <img src={historylogo} alt="historyLogo" />

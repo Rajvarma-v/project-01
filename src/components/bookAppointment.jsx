@@ -4,10 +4,10 @@ function BookAppointment() {
   return (
     <div
       style={{
-        margin: "13vh 0px 0px 10px",
+        margin: "15vh 0px 0px 10px",
       }}
     >
-      Book Your Appointment
+      Book Your Appointment. 
     </div>
   );
 }
