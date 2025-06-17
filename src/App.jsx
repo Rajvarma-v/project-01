@@ -1,17 +1,9 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Welcomepage from "./components/welcompage";
-import LangSelectCompo from "./components/langselectcompo";
-import Homepage from "./components/homepage";
-import Navbar from "./components/navbar";
-import Appointment from "./components/appointment";
-import BookAppointment from "./components/bookAppointment.jsx";
 import { useSelector, useDispatch } from "react-redux";
-import PhoneNumberVerificationPage from "./components/phonenoverificationpage.jsx";
-import OTPVerificationPage from "./components/otpVerification.jsx";
-import AadharVerificationPage from "./components/aadharVerificationPage.jsx";
-
+import AppRoutes from "./Routes/AppRoutes";
+import PhoneNumberVerificationPage from "./components/phonenoverificationpage";
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -19,7 +11,7 @@ function App() {
 
   const language = useSelector((state) => state.language.selectLanguage);
   const phoneNumber = useSelector((state) => state.phoneNumber.phonenumber);
-  const isLoggedIn = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,28 +22,12 @@ function App() {
   }, [phoneNumber, dispatch]);
 
   if (showWelcome) return <Welcomepage />;
-  // if (!language) return <LangSelectCompo />;
   if (!phoneNumber) return <PhoneNumberVerificationPage />;
-  if (!isLoggedIn) return <OTPVerificationPage />;
-  if (!isLoggedIn) return <AadharVerificationPage />;
 
 
   return (
     <>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/appointment" element={<Appointment/>} />
-        <Route path="/bookappointment" element={<BookAppointment />} />
-        <Route path="/welcomepage" element={<Welcomepage />} />
-        <Route path="/langSelectCompo" element={<LangSelectCompo />} />
-        <Route path="/otpVerification" element={<OTPVerificationPage />} />
-        <Route path="/phoneNumberVerificationPage" element={<PhoneNumberVerificationPage />} /> 
-        <Route path="/aadharVerificationPage" element={<AadharVerificationPage />} />
-      </Routes>
-      {/* <OTPVerificationPage/> */}
-      {/* <AadharVerificationPage/> */}
-      {/* <PhoneNumberVerificationPage/> */}
+      <AppRoutes/>
     </>
   );
 }

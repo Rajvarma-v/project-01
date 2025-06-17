@@ -1,4 +1,6 @@
 import React from "react";
+import PhoneNumberVerificationPage from "./phonenoverificationpage";
+
 import {
   Box,
   Button,
@@ -47,6 +49,16 @@ function AadharVerificationPage(){
 
   return (
      <Grid container columns={12} >
+      
+        <Box sx={{ p: 1, position: "fixed", top: "5px", left: "5px" }}>
+          <IconButton
+            onClick={() => navigate("/phonenoverificationpage")}
+            sx={{ color: "#7e22ce", display: "flex", alignItems: "center", gap: "4px" }}
+          >
+              <ArrowBackIcon />
+              <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>Back</Typography>
+          </IconButton>
+        </Box>
 
         <Grid size={{ xs: 12, sm: 6 }} >
           <Box sx={{ width:"100%",bgcolor:{xs:"white", sm : "rgb(239, 239, 239)"}, height:{xs:"auto", sm:"100vh"}, display:"flex", justifyContent:"center", alignItems:"center"}}>
@@ -140,7 +152,7 @@ function AadharVerificationPage(){
                       cursor:checked?"pointer":"not-allowed",
                       p:0.8
                     }}
-                    // disabled={!checked}
+                    disabled={!checked}
                     
                     onClick={() =>{
                        navigate("/");

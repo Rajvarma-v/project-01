@@ -1,6 +1,7 @@
 import React from "react";
 import DGPhandlogo from "../assets/DGPhandlogo.jpg";
 import DGPwomanlogo from "../assets/DGPwomanlogo.png";
+import { useNavigate } from "react-router-dom";
 
 import { Box, Container, Grid, Typography } from "@mui/material";
 

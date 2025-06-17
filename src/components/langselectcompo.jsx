@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "../csscomponent/langselect.module.css";
+import style from "../css/langselect.module.css";
 import phonelogo from "../assets/phonelogo.png";
 import { useDispatch } from "react-redux";
 import { setLanguage } from "../features/languageSlice";

@@ -1,133 +1,189 @@
-import React, { useState } from "react";
-import style from "../csscomponent/appointment.module.css";
-import appointmentlistlogo from "../assets/appointmentlistlogo.png";
-import historydatalogo from "../assets/historydatalogo.png";
-import filterLogo from "../assets/filterLogo.png";
-import searchLogo from "../assets/searchLogo.png";
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Button,
+  Container,
+  Typography,
+  TextField,
+  InputAdornment,
+  Modal,
+  Paper,
+  IconButton,
+  Stack
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { useSelector, useDispatch } from "react-redux";
 import { setView } from "../features/appointmentSlice";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import GetAppointmentData from "./GetAppointmentData";
+import appointmentlistlogo from "../assets/appointmentlistlogo.png";
+import historydatalogo from "../assets/historydatalogo.png";
+
 
 const Appointment = () => {
   const [showFilters, setShowFilters] = useState(false);
   const view = useSelector((state) => state.appointment.view);
+  const allAppointments = useSelector((state) => state.appointmentData.appointments);
+  const phoneNumber = useSelector((state) => state.phoneNumber.phonenumber);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (showFilters) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+  const userAppointments = allAppointments.filter(
+    (appointment) => appointment.userNumber === phoneNumber
+  );
 
+  const hasApproved = userAppointments.some((apt) => apt.status === "Approved");
+  const hasCancelled = userAppointments.some((apt) => apt.status === "Cancelled");
+
+  useEffect(() => {
+    document.body.style.overflow = showFilters ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [showFilters]);
 
+  const renderContent = () => {
+    if (view === "upcoming") {
+      if (hasApproved) return <GetAppointmentData />;
+      return (
+        <Box textAlign="center" mt={4}>
+          <Typography variant="h6" textAlign={"left"}>No Upcoming Appointments!</Typography>
+          <Typography textAlign={"left"}>Looks like you don’t have any Upcoming appointments.</Typography>
+          <Box component="img" src={appointmentlistlogo} width={200} mt={2} />
+        </Box>
+      );
+    } else {
+      if (hasCancelled) return <GetAppointmentData />;
+      return (
+        <Box textAlign="center" mt={4}>
+          <Typography variant="h6" textAlign={"left"}>No Appointments History!</Typography>
+          <Typography textAlign={"left"}>Looks like you don’t have any past appointments.</Typography>
+          <Box component="img" src={historydatalogo} width={200} mt={2} />
+        </Box>
+      );
+    }
+  };
+
   return (
-    <div className={style.appointmentWrapper}>
-      <div>
-
-      
-        <div className={style.searchFilterSection}>
-          <div className={style.inputAndImgDiv}>
-            <img src={searchLogo} alt="Search" />
-            <input type="text" placeholder="Search your appointment" />
-          </div>
-          <button
-            className={style.filterIcon}
-            onClick={() => setShowFilters(true)}
-          >
-            <img src={filterLogo} alt="FilterLogo" />
-          </button>
-        </div>
-
-
-   
-        <div className={style.tabs}>
-          <button
-            className={style.tab}
-            onClick={() => dispatch(setView("upcoming"))}
-            style={{
-              borderBottom: view === "upcoming" ? "3px solid purple" : "none",
-              color: view === "upcoming" ? "purple" : "#919192",
-            }}
-          >
-            Upcoming Appointments
-          </button>
-          <button
-            className={style.tab}
-            onClick={() => dispatch(setView("history"))}
-            style={{
-              borderBottom: view === "history" ? "3px solid purple" : "none",
-              color: view === "history" ? "purple" : "#919192",
-            }}
-          >
-            History
-          </button>
-        </div>
-
+    <Container maxWidth="md" sx={{ pb: 12,  mb:"5vh", mt:{xs:"12vh", sm:"15vh"}}}>
+     
+      <Box display="flex" justifyContent="space-between" alignItems="center" mt={2} mb={2} sx={{borderRadius:15}}>
+        <TextField
+          fullWidth
+          placeholder="Search your appointment"
+          sx={{borderRadius:"100px"}}
+          inputprops={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Button onClick={() => setShowFilters(true)} sx={{color:"rgb(201,201,201)" }}>
+          <FilterAltIcon sx={{p:0.5, fontSize: 50, color:"rgb(134, 57, 130)", bgcolor:"rgb(231, 214, 240)", borderRadius:"10px" }} /> 
+        </Button>
+      </Box>
 
     
-        {view === "upcoming" ? (
-          <div className={style.noAppointments}>
-            <p>No Upcoming Appointments!</p>
-            <p>Looks like you don’t have any Upcoming appointments.</p>
-            <img src={appointmentlistlogo} alt="No appointment" />
-          </div>
-        ) : (
-          <div className={style.noAppointments}>
-            <p>No Appointments History!</p>
-            <p>Looks like you don’t have any past appointments.</p>
-            <img src={historydatalogo} alt="No appointment" />
-          </div>
-        )}
-      </div>
+      <Box display="flex" justifyContent="space-around" mb={2}>
+        <Button
+          onClick={() => dispatch(setView("upcoming"))}
+          sx={{
+            color: view === "upcoming" ? "purple" : "#919192",
+            borderBottom: view === "upcoming" ? "3px solid purple" : "none",
+            borderRadius: 0,
+          }}
+        >
+          Upcoming Appointments
+        </Button>
+        <Button
+          onClick={() => dispatch(setView("history"))}
+          sx={{
+            color: view === "history" ? "purple" : "#919192",
+            borderBottom: view === "history" ? "3px solid purple" : "none",
+            borderRadius: 0,
+          }}
+        >
+          History
+        </Button>
+      </Box>
+
+      {renderContent()}
+
+      <Box
+        position="fixed"
+        bottom={0}
+        left={0}
+        width="100%"
+        zIndex={999}
+        bgcolor="#fff"
+        borderTop="1px solid #ccc"
+        py={2}
+      >
+        <Container maxWidth="md" >
+          <Button
+            variant="contained"
+            fullWidth
+            sx={{
+              bgcolor: "rgb(103, 31, 148)",
+              borderRadius: "15px",
+              fontSize: "20px",
+              p: 1.5,
+              textTransform: "none",
+              border:"none"
+            }}
+            onClick={() => navigate("/bookappointment")}
+          >
+            Book New Appointment
+          </Button>
+        </Container>
+      </Box>
 
 
- 
-      <div className={style.bookBtn}>
-        <button onClick={() => navigate("/bookappointment")}>
-          Book New Appointment
-        </button>
-      </div>
+      <Modal open={showFilters} onClose={() => setShowFilters(false)}>
+        <Box
+          component={Paper}
+          elevation={4}
+          sx={{
+            maxWidth: 400,
+            width: "90%",
+            mx: "auto",
+            mt: 10,
+            p: 3,
+            borderRadius: 2,
+            position: "relative",
+          }}
+        >
+          <Typography variant="h6" mb={2}>
+            Filter Options
+          </Typography>
 
+          <Typography>Select Status:</Typography>
+          <Box>
+            <Button variant="outlined">Completed</Button>
+            <Button variant="outlined">Missed</Button>
+            <Button variant="outlined">Cancelled</Button>
+            <Button variant="outlined">Rejected</Button>
+          </Box>
 
-   
-      {showFilters && (
-        <div className={style.filterPopup}>
-          <div className={style.filterCard}>
-            <h4>Filter Options</h4>
-            <div className={style.statusSection}>
-              <label>Select Status:</label>
-              <div className={style.statusOptions}>
-                <button>Completed</button>
-                <button>Missed</button>
-                <button>Cancelled</button>
-                <button>Rejected</button>
-              </div>
-            </div>
-            <div className={style.dateSection}>
-              <label>Select Date:</label>
-              <input type="date" />
-              <input type="date" />
-            </div>
-            <div className={style.filterActions}>
-              <button
-                className={style.reset}
-                onClick={() => setShowFilters(false)}
-              >
-                Reset Filters
-              </button>
-              <button className={style.apply}>Apply Filters</button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+          <Typography mt={2}>Select Date:</Typography>
+          <Stack direction="row" spacing={2} my={1}>
+            <TextField type="date" fullWidth size="small" />
+            <TextField type="date" fullWidth size="small" />
+          </Stack>
+
+          <Stack direction="row" spacing={2} mt={3}>
+            <Button fullWidth onClick={() => setShowFilters(false)} variant="outlined">
+              Reset Filters
+            </Button>
+            <Button fullWidth variant="contained">Apply Filters</Button>
+          </Stack>
+        </Box>
+      </Modal>
+    </Container>
   );
 };
 

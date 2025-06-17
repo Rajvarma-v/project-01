@@ -40,9 +40,7 @@ function PhoneNumberVerificationPage() {
     const fullPhoneNumber = "+91" + localNumber;
     dispatch(setNumber(fullPhoneNumber));
 
-    setTimeout(() => {
       navigate("/otpVerification");
-    }, 1000);
   };
 
   return (

@@ -21,11 +21,15 @@ import OTPVerificationImage from "../assets/OTPVerificationImage.jpg";
 import DGPhandlogo from "../assets/DGPhandlogo.jpg"
 
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setloginState } from "../features/phonenumberSlice";
 
 function OTPVerificationPage() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [timer, setTimer] = useState(120);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const loginState = useSelector((state) => state.phoneNumber.loginState)
   const correctOTP = "123456";
 
   useEffect(() => {
@@ -45,7 +49,10 @@ function OTPVerificationPage() {
 
     if (enteredOtp === correctOTP) {
       alert("OTP Verified Successfully!");
-      navigate("/aadharVerificationPage");
+      dispatch(setloginState(!loginState))
+       setTimeout(() => {
+        navigate("/aadharVerificationPage");
+      }, 100)
     } else {
       alert("Invalid OTP. Please try again.");
     }
@@ -71,13 +78,13 @@ function OTPVerificationPage() {
           
                 <Box sx={{ p: 1, position: "fixed", top: "5px", left: "5px" }}>
                   <IconButton
-                    onClick={() => navigate("/phoneNumberVerificationPage")}
+                    onClick={() => navigate("/phonenoverificationpage")}
                     sx={{ color: "#7e22ce", display: "flex", alignItems: "center", gap: "4px" }}
                   >
                       <ArrowBackIcon />
                       <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>Back</Typography>
                   </IconButton>
-              </Box>
+               </Box>
 
 
               <Box sx={{ width:"100%", height:{xs:"auto", sm:"100vh"}, display:"flex", justifyContent:"center", alignItems:"center"}}>

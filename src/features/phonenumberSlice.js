@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
-    phonenumber: ''
+    phonenumber: '',
+    loginState:'false'
 }
 
 const phoneNoSlice = createSlice({
@@ -10,9 +11,13 @@ const phoneNoSlice = createSlice({
     reducers:{
         setNumber:(state,action) => {
            state.phonenumber = action.payload
+        },
+        
+        setloginState:(state,action) =>{
+            state.loginState  = action.payload
         }
     }
 })
 
-export const {setNumber} = phoneNoSlice.actions
+export const {setNumber,setloginState} = phoneNoSlice.actions
 export default phoneNoSlice.reducer

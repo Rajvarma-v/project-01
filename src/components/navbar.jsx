@@ -7,7 +7,7 @@ import appointmentlogo from "../assets/appointmentlogo.png";
 import upcominglogo from "../assets/upcominglogo.png";
 import historylogo from "../assets/historylogo.png";
 import logoutlogo from "../assets/logoutlogo.png";
-import style from "../csscomponent/navbar.module.css";
+import style from "../css/navbar.module.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
